@@ -9,7 +9,7 @@ run_osmium <- function(pmid) {
   doi <- a$basic$doi
   citations <- a$basic$citedByCount
 
-  pages <- NA
+  pages <- calculate_pages(a$basic$pageInfo)
   osmium <- NA
   date <- Sys.Date()
 
@@ -20,8 +20,17 @@ run_osmium <- function(pmid) {
 
 
 calculate_pages <- function(page_string){
-  diff <- eval(parse(text=page_string))
-  n_pages = abs(diff) + 1
+
+  tryCatch(
+    expr =  {
+      diff <- eval(parse(text=page_string))
+      n_pages = abs(diff) + 1
+    },
+    error = function(e) {
+      n_pages <- NA
+    }
+  )
+
   return(n_pages)
 }
 

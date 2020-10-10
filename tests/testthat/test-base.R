@@ -13,6 +13,11 @@ test_that("run_osmium runs", {
     df$doi[1],
     "10.1016/j.jbi.2010.01.006"
   )
+
+  expect_equal(
+    df$pages[1],
+    5
+  )
 })
 
 
