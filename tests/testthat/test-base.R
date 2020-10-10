@@ -14,3 +14,12 @@ test_that("run_osmium runs", {
     "10.1016/j.jbi.2010.01.006"
   )
 })
+
+
+test_that("calculate_pages work", {
+
+  result <- calculate_pages("75 - 79")
+  expected = 5
+  expect_equal(result, expected)
+
+})

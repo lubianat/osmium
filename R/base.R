@@ -17,3 +17,11 @@ run_osmium <- function(pmid) {
 
   return(result)
 }
+
+
+calculate_pages <- function(page_string){
+  diff <- eval(parse(text=page_string))
+  n_pages = abs(diff) + 1
+  return(n_pages)
+}
+
