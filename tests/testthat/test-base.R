@@ -3,7 +3,7 @@ test_that("multiplication works", {
 })
 
 test_that("run_osmium runs", {
-  df <- run_osmium("20123131")
+  df <- run_osmium("20123131", density_alpha = 1)
 
   expect_equal(
     df$title[1],
@@ -18,6 +18,15 @@ test_that("run_osmium runs", {
     df$pages[1],
     5
   )
+
+  # The number of citations for this article
+  # Might increase in the future
+  current_density <- 16/5 - 0.00001
+  expect_gt(
+    df$osmium[1],
+    current_density
+  )
+
 })
 
 

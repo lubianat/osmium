@@ -10,4 +10,5 @@ Ranks articles by citation density (citations/page).
     - citations: The citations according to Europe PMC
     - pages: The number of pages, inferred from Europe PMC
     - osmium: The density score 
+    - alpha: The alpha used for the calculation
     - date: The date of search

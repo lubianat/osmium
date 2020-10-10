@@ -1,7 +1,7 @@
 library(europepmc)
 
 
-run_osmium <- function(pmid) {
+run_osmium <- function(pmid, density_alpha = 1) {
   a <- epmc_details(pmid)
 
   pmid <- a$basic$pmid
@@ -10,7 +10,11 @@ run_osmium <- function(pmid) {
   citations <- a$basic$citedByCount
 
   pages <- calculate_pages(a$basic$pageInfo)
-  osmium <- NA
+  osmium <- calculate_density(pages,
+                              citations,
+                              alpha = density_alpha)
+
+  alpha <- density_alpha
   date <- Sys.Date()
 
   result <- data.frame(pmid, title, doi, citations, pages, osmium, date, stringsAsFactors = FALSE)
@@ -34,7 +38,7 @@ calculate_pages <- function(page_string){
 }
 
 
-calculate_density <- function(n_pages, n_citations, alpha = 1){
+calculate_density <- function(n_pages, n_citations, alpha){
     density = n_citations / (n_pages ** alpha)
     return(density)
 
