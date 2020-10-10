@@ -2,8 +2,10 @@ test_that("multiplication works", {
   expect_equal(2 * 2, 4)
 })
 
-test_that("run_osmium runs", {
-  df <- run_osmium("20123131", density_alpha = 1)
+test_that("run_multiple_osmium runs", {
+
+  pmids <- c("20123131", "15892874", "notanid")
+  df <- run_multiple_osmium(pmids, density_alpha = 1)
 
   expect_equal(
     df$title[1],
@@ -19,6 +21,11 @@ test_that("run_osmium runs", {
     5
   )
 
+  expect_equal(
+    df$alpha[1],
+    1
+  )
+
   # The number of citations for this article
   # Might increase in the future
   current_density <- 16/5 - 0.00001
@@ -29,6 +36,14 @@ test_that("run_osmium runs", {
 
 })
 
+
+
+test_that("run_single_osmium runs", {
+
+  pmids <- c("31322498")
+  df <- run_single_osmium(pmids, density_alpha = 1)
+
+})
 
 test_that("calculate_pages work", {
 
@@ -56,6 +71,12 @@ test_that("calculate_density work", {
                                 n_citations = 100,
                                 alpha = 3)
     expected = 0.8
+    expect_equal(result, expected)
+
+    result <- calculate_density(n_pages = NA,
+                                n_citations = 100,
+                                alpha = 1)
+    expected = NA
     expect_equal(result, expected)
 
   })

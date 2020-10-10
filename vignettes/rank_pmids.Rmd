@@ -1,0 +1,37 @@
+---
+title: "Rank PMIDS by citation density"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Rank PMIDS by citation density}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Basic Usage
+
+From a list of self-curated PMIDs, I want to get the most bang for my buck.
+
+My buck is time, and the bang is the influence of an article.
+
+Let`s run osmium and see which docs have a high citation/page score.
+
+```{r setup}
+library(europepmc)
+library(osmium)
+
+a <- epmc_search('"concept of cell type"')
+pmids = a$id
+
+df <- run_multiple_osmium(pmids, density_alpha = 1)
+
+df <- df[order(df$osmium),]
+
+df.head()
+```
