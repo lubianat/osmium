@@ -25,13 +25,14 @@ Let`s run osmium and see which docs have a high citation/page score.
 ```{r setup}
 library(europepmc)
 library(osmium)
-
+library(dplyr)
+library(knitr)
 a <- epmc_search('"concept of cell type"')
 pmids = a$id
 
-df <- run_multiple_osmium(pmids, density_alpha = 1)
+df <- run_multiple_osmium(pmids, density_alpha = 2)
 
-df <- df[order(df$osmium),]
+df <- df %>% arrange(desc(osmium))  %>% select(citations, pages, osmium, title)
 
-df.head()
+kable(df)
 ```
