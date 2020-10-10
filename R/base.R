@@ -13,7 +13,7 @@ run_multiple_osmium <- function(pmids, density_alpha = 1){
     print(pmid)
     tryCatch(
       expr = {
-    df <-run_single_osmium(pmid,density_alpha =1 )
+    df <-run_single_osmium(pmid,density_alpha )
     list_of_results[[pmid]] <- df },
       error = function(e) {
         sprintf("Failed for %s", pmid)
@@ -40,10 +40,10 @@ run_single_osmium <- function(pmid, density_alpha) {
 
   pages <- calculate_pages(a$basic$pageInfo)
 
-  osmium <- calculate_density(pages,
+  osmium_score <- calculate_density(pages,
                               citations,
                               alpha = density_alpha)
-
+  osmium <- round(osmium_score, 3)
   alpha <- density_alpha
   date <- Sys.Date()
 
