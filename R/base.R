@@ -1,7 +1,7 @@
 library(europepmc)
 
 
-call_europepmc <- function(pmid) {
+run_osmium <- function(pmid) {
   a <- epmc_details(pmid)
 
   pmid <- a$basic$pmid
@@ -17,6 +17,3 @@ call_europepmc <- function(pmid) {
 
   return(result)
 }
-
-
-call_europepmc("20123131")
