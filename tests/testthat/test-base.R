@@ -4,7 +4,8 @@ test_that("multiplication works", {
 
 test_that("call to EuropePMC works", {
   df <- call_europepmc("20123131")
-  expect_equal(df$title[1],
-               "Hematopoietic cell types: prototype for a revised cell ontology." )
+  expect_equal(
+    df$title[1],
+    "Hematopoietic cell types: prototype for a revised cell ontology."
+  )
 })
-

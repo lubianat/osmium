@@ -1,8 +1,7 @@
 library(europepmc)
 
 
-call_europepmc <- function(pmid){
-
+call_europepmc <- function(pmid) {
   a <- epmc_details(pmid)
 
   pmid <- a$basic$pmid
@@ -17,8 +16,6 @@ call_europepmc <- function(pmid){
   result <- data.frame(pmid, title, doi, citations, pages, osmium, date, stringsAsFactors = FALSE)
 
   return(result)
-
-
 }
 
 
