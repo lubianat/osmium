@@ -18,7 +18,6 @@ run_osmium <- function(pmid) {
   return(result)
 }
 
-
 calculate_pages <- function(page_string){
 
   tryCatch(
@@ -32,5 +31,12 @@ calculate_pages <- function(page_string){
   )
 
   return(n_pages)
+}
+
+
+calculate_density <- function(n_pages, n_citations, alpha = 1){
+    density = n_citations / (n_pages ** alpha)
+    return(density)
+
 }
 

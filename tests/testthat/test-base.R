@@ -28,3 +28,26 @@ test_that("calculate_pages work", {
   expect_equal(result, expected)
 
 })
+
+test_that("calculate_density work", {
+
+    result <- calculate_density(n_pages = 5,
+                                n_citations = 100,
+                                alpha = 1)
+    expected = 20
+    expect_equal(result, expected)
+
+    result <- calculate_density(n_pages = 5,
+                                n_citations = 100,
+                                alpha = 2)
+    expected = 4
+    expect_equal(result, expected)
+
+    result <- calculate_density(n_pages = 5,
+                                n_citations = 100,
+                                alpha = 3)
+    expected = 0.8
+    expect_equal(result, expected)
+
+  })
+
