@@ -8,7 +8,7 @@ NULL
 #' @param density_alpha A density_alpha to modulate the weight of pages
 #' @param sleep The number of seconds to wait between API calls. Defaults to 0.5.
 #' @return A data frame containing info about articles, citations, pages and the osmium score.
-#' @example
+#' @examples
 #' pmids <- c("20123131", "15892874", "notanid")
 #' df <- run_multiple_osmium(pmids, density_alpha = 1)
 #' print(df)

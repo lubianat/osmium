@@ -19,3 +19,8 @@ A data frame containing info about articles, citations, pages and the osmium sco
 \description{
 Runs osmium for multiple PMIDs
 }
+\examples{
+pmids <- c("20123131", "15892874", "notanid")
+df <- run_multiple_osmium(pmids, density_alpha = 1)
+print(df)
+}
