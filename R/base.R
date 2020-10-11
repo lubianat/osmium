@@ -6,6 +6,7 @@ NULL
 #' @param pmids A character vector of PMIDs
 #' @param density_alpha A density_alpha to modulate the weight of pages
 #' @param sleep The number of seconds to wait between API calls. Defaults to 0.5.
+#' @return A data frame containing info about articles, citations, pages and the osmium score.
 #' @export
 run_multiple_osmium <- function(pmids, density_alpha = 1, sleep = 0.5) {
   list_of_results <- list()
