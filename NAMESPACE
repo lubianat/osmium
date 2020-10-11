@@ -3,3 +3,4 @@
 export(run_multiple_osmium)
 import(dplyr)
 import(europepmc)
+import(progress)

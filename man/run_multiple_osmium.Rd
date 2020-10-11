@@ -13,6 +13,9 @@ run_multiple_osmium(pmids, density_alpha = 1, sleep = 0.5)
 
 \item{sleep}{The number of seconds to wait between API calls. Defaults to 0.5.}
 }
+\value{
+A data frame containing info about articles, citations, pages and the osmium score.
+}
 \description{
 Runs osmium for multiple PMIDs
 }

@@ -1,5 +1,6 @@
 #' @import dplyr
 #' @import europepmc
+#' @import progress
 NULL
 
 #' Runs osmium for multiple PMIDs
@@ -7,12 +8,23 @@ NULL
 #' @param density_alpha A density_alpha to modulate the weight of pages
 #' @param sleep The number of seconds to wait between API calls. Defaults to 0.5.
 #' @return A data frame containing info about articles, citations, pages and the osmium score.
+#' @example
+#' pmids <- c("20123131", "15892874", "notanid")
+#' df <- run_multiple_osmium(pmids, density_alpha = 1)
+#' print(df)
 #' @export
 run_multiple_osmium <- function(pmids, density_alpha = 1, sleep = 0.5) {
+
+  progress_bar_counter <- progress_bar$new(
+    format = " processing [:bar] :current/:total  eta: :eta",
+    total = length(pmids),
+    clear = FALSE,
+    width= 60)
+
   list_of_results <- list()
   for (pmid in pmids) {
-    Sys.sleep(0.3)
-    print(pmid)
+    progress_bar_counter$tick()
+    Sys.sleep(sleep)
     tryCatch(
       expr = {
         df <- run_single_osmium(pmid, density_alpha)
