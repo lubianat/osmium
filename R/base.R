@@ -2,13 +2,15 @@
 #' @import europepmc
 NULL
 
-#' Runs osmium
+#' Runs osmium for multiple PMIDs
 #' @param pmids A character vector of PMIDs
 #' @param density_alpha A density_alpha to modulate the weight of pages
+#' @param sleep The number of seconds to wait between API calls. Defaults to 0.5.
 #' @export
-run_multiple_osmium <- function(pmids, density_alpha = 1) {
+run_multiple_osmium <- function(pmids, density_alpha = 1, sleep = 0.5) {
   list_of_results <- list()
   for (pmid in pmids) {
+    Sys.sleep(0.3)
     print(pmid)
     tryCatch(
       expr = {

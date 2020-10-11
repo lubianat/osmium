@@ -2,15 +2,17 @@
 % Please edit documentation in R/base.R
 \name{run_multiple_osmium}
 \alias{run_multiple_osmium}
-\title{Runs osmium}
+\title{Runs osmium for multiple PMIDs}
 \usage{
-run_multiple_osmium(pmids, density_alpha = 1)
+run_multiple_osmium(pmids, density_alpha = 1, sleep = 0.5)
 }
 \arguments{
 \item{pmids}{A character vector of PMIDs}
 
 \item{density_alpha}{A density_alpha to modulate the weight of pages}
+
+\item{sleep}{The number of seconds to wait between API calls. Defaults to 0.5.}
 }
 \description{
-Runs osmium
+Runs osmium for multiple PMIDs
 }
